@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "express": "~4.13.3",
-    "express-static": "^1.0.3"
+    "express-static": "^1.0.3",
+    "lc-sdk-node.js": "0.0.2"
   },
   "devDependencies": {
     "gulp": "~3.9.0",
