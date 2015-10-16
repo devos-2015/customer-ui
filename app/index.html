@@ -52,13 +52,15 @@
     <div class="container">
         <h1>Unser Shop</h1>
         <p>Hier finden Sie alles zum...</p>
+        <p></p>
+        <p id="sessionId"></p>
     </div>
 </div>
 
 <div class="container">
     <div class="row">
       <div class="col-md-8">
-        <p>Produktauswahl</p>
+        <h2><p>Produktauswahl</p></h2>
         <!-- Example row of columns -->
         <div id="productlist" class="row">
             <!--div class="col-md-4">
@@ -68,8 +70,15 @@
             </div-->
         </div>
       </div>
-      <div class="col-md-4">
-        <p>Warenkorb</p>
+      <div class="col-md-4" style="background-color: aquamarine">
+        <h2><p>Warenkorb</p></h2>
+        <div id="carctlist" class="row">
+          <!--div class="col-md-4">
+              <h2>Heading</h2>
+              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+              <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          </div-->
+        </div>
       </div>
     </div>
 
@@ -86,12 +95,21 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 <script lang="javascript">
+  function S4() {
+    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+  }
+
+  // then to call it, plus stitch in '4' in the third group
+  var sessionGuid = (S4() + S4() + "-" + S4() + "-4" + S4().substr(0,3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
+
+  $('#sessionId').append(sessionGuid);
+
   $.getJSON('http://46.101.193.82:32775/GetAllProducts', function(data){
     console.log(data);
     var items = [];
     $.each( data, function( key, val ) {
       items.push( '<div class="col-md-4">' +
-                    '<h2>' + val.Interpret + '</h2>' +
+                    '<h3>' + val.Interpret + '</h3>' +
                     '<p>' + val.Album + '</p>' +
                     '<p>' + val.Price + '</p>' +
                     '<p>' + '' + '</p>' +
@@ -99,7 +117,21 @@
                 );
     });
     $('#productlist').append(items.join( "" ));
+  })
 
+  $.getJSON('mock/cart/GetCart.json', function(data){
+    console.log(data);
+    var items = [];
+    $.each( data, function( key, val ) {
+      items.push( '<div class="col-md-12">' +
+        '<h3>' + val.Interpret + '</h3>' +
+        '<p>' + val.Album + '</p>' +
+        '<p>' + val.Price + '</p>' +
+        '<p>' + '' + '</p>' +
+        '</div>'
+      );
+    });
+    $('#carctlist').append(items.join( "" ));
   })
 </script>
 

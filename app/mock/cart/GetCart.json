@@ -1,14 +1,14 @@
 [
   {
     "id": "1",
-    "title": "title1",
-    "album": "album1",
+    "Interpret": "title1",
+    "Album": "album1",
     "price": 1.99
   },
   {
     "id": "2",
-    "title": "title2",
-    "album": "album2",
+    "Interpret": "title2",
+    "Album": "album2",
     "price": 1.99
   }
 ]
