@@ -1,6 +1,21 @@
 var express = require('express');
 var static  = require('express-static');
 
+// get ServiceList from DiscoveryServer
+var sdk = require('lc-sdk-node.js');
+
+var client = sdk({ discoveryServers: [
+  '46.101.245.190:8500',
+  '46.101.132.55:8500',
+  '46.101.193.82:8500'
+]})
+
+client.get('cart-service', '/cart/43759348759').then(function (resul){
+  console.log(result);
+})
+//--------------------------------------------
+
+
 // Define some default values if not set in environment
 var PORT = process.env.PORT || 3000;
 var SHUTDOWN_TIMEOUT = process.env.SHUTDOWN_TIMEOUT || 10000;
