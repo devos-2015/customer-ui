@@ -126,13 +126,14 @@
 
   var cartSumme = '47,11';
 
-  $.getJSON('http://46.101.193.82:32775/GetAllProducts', function(data){
+  $.getJSON('http://46.101.193.82:32774/GetAllProducts', function(data){
     var items = [];
     $.each( data, function( key, val ) {
       items.push( '<div class="col-md-4">' +
-                    '<h3>' + val.Interpret + '</h3>' +
-                    '<p>' + val.Album + '</p>' +
-                    '<p>' + val.Price + '</p>' +
+                    '<h3 class="Interpret">' + val.Interpret + '</h3>' +
+                    '<p class="Album">' + val.Album + '</p>' +
+                    '<p class="Price">' + val.Price + '</p>' +
+                    '<p class="Id">' + val.Id + '</p>' +
                     '<p><a class="btn btn-primary addToCart">add to cart</a></p>' +
                   '</div>'
                 );
@@ -140,13 +141,18 @@
     $('#productlist').append(items.join( "" ));
 
     $(".addToCart").on('click', function() {
-        $.post( "/post", { interpret: "test", cartId: "test", album: "test" }).done(function( data ) {
+        var productId =  $(this).parent().parent().find('.Id').text();
+        var interpret = $(this).parent().parent().find('.Interpret').text();
+        var album =  $(this).parent().parent().find('.Album').text();
+        var price =  $(this).parent().parent().find('.Price').text();
+        console.log(sessionGuid + '/n' + productId + '\n' + interpret + '\n' + album + '\n' + price);
+        $.post( "http://46.101.245.190:32777/addProduct/" + productId, { sessionId: sessionGuid, id: productId, album: album, interpret: interpret, price: price }).done(function( data ) {
             alert( "added" );
         });
     });
   });
 
-  $.getJSON('mock/cart/GetCart.json', function(data){
+  $.getJSON('http://46.101.245.190:32777/carts/' + sessionGuid, function(data){
     console.log(data);
     var items = [];
     $.each( data, function( key, val ) {
