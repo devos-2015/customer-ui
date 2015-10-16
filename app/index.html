@@ -80,7 +80,7 @@
           </div-->
         </div>
         <div class="row">
-            <div class="col-md-12" style="padding-bottom: 20px">
+            <div class="col-md-12">
                <hr />
             </div>
         </div>
@@ -89,7 +89,7 @@
                 Name:
             </div>
             <div class="col-md-8">
-
+                <input id="user_name" />
             </div>
         </div>
         <div class="row">
@@ -97,7 +97,7 @@
               E-Mail:
           </div>
           <div class="col-md-8">
-
+            <input id="user_mail" />
           </div>
         </div>
     </div>
@@ -114,10 +114,20 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+    <script src="q.js"></script>
+    <script src="lc-sdk-jquery.js"></script>
+
+
 <script lang="javascript">
+
   function S4() {
     return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
   }
+
+  var sdk = new ServiceClient( {
+      discoveryServers: ['http://46.101.245.190:8500']
+  });
+
 
   // then to call it, plus stitch in '4' in the third group
   var sessionGuid = (S4() + S4() + "-" + S4() + "-4" + S4().substr(0,3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
@@ -126,7 +136,7 @@
 
   var cartSumme = '47,11';
 
-  $.getJSON('http://46.101.193.82:32774/GetAllProducts', function(data){
+  $.getJSON('http://46.101.193.82:32775/GetAllProducts', function(data){
     var items = [];
     $.each( data, function( key, val ) {
       items.push( '<div class="col-md-4">' +
@@ -174,7 +184,7 @@
     );
 
     $('#carctlist').append(items.join( "" ));
-  })
+  });
 </script>
 
 </body>
