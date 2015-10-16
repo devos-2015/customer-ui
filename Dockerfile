@@ -1,5 +1,5 @@
 FROM mhart/alpine-node:4.2.1
-MAINTAINER https://github.com/devos-2015/hello-world-service
+MAINTAINER https://github.com/devos-2015/customer-ui
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
