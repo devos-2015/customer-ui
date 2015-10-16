@@ -104,6 +104,8 @@
 
   $('#sessionId').append(sessionGuid);
 
+  var cartSumme = '47,11';
+
   $.getJSON('http://46.101.193.82:32775/GetAllProducts', function(data){
     var items = [];
     $.each( data, function( key, val ) {
@@ -116,7 +118,7 @@
                 );
     });
     $('#productlist').append(items.join( "" ));
-      
+
     $(".addToCart").on('click', function() {
         alert( "added" );
     });
@@ -134,6 +136,15 @@
         '</div>'
       );
     });
+
+    items.push( '<div class="col-md-12">' +
+      '<p>' + '' + '</p>' +
+      '<p>' + '' + '</p>' +
+      '<p>' + '' + '</p>' +
+      '<h3>Summe: ' + cartSumme + '</h3>' +
+      '</div>'
+    );
+
     $('#carctlist').append(items.join( "" ));
   })
 </script>

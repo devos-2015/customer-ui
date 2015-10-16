@@ -3,12 +3,12 @@
     "id": "1",
     "Interpret": "title1",
     "Album": "album1",
-    "price": 1.99
+    "Price": 1.99
   },
   {
     "id": "2",
     "Interpret": "title2",
     "Album": "album2",
-    "price": 1.99
+    "Price": 1.99
   }
 ]
