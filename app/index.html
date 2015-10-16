@@ -57,7 +57,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container shop">
     <div class="row">
       <div class="col-md-8">
         <h2><p>Produktauswahl</p></h2>
@@ -79,9 +79,29 @@
               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
           </div-->
         </div>
-      </div>
-    </div>
+        <div class="row">
+            <div class="col-md-12" style="padding-bottom: 20px">
+               <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                Name:
+            </div>
+            <div class="col-md-8">
 
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+              E-Mail:
+          </div>
+          <div class="col-md-8">
+
+          </div>
+        </div>
+    </div>
+        <a class="btn btn-primary buy">kaufen!</a>
     <hr>
 
     <footer>
@@ -113,14 +133,16 @@
                     '<h3>' + val.Interpret + '</h3>' +
                     '<p>' + val.Album + '</p>' +
                     '<p>' + val.Price + '</p>' +
-                    '<p><button class="btn btn-primary addToCart">add to cart</button></p>' +
+                    '<p><a class="btn btn-primary addToCart">add to cart</a></p>' +
                   '</div>'
                 );
     });
     $('#productlist').append(items.join( "" ));
 
     $(".addToCart").on('click', function() {
-        alert( "added" );
+        $.post( "/post", { interpret: "test", cartId: "test", album: "test" }).done(function( data ) {
+            alert( "added" );
+        });
     });
   });
 
