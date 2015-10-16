@@ -79,7 +79,12 @@
               <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
           </div-->
         </div>
-      </div>
+        <div class="row">
+            <div class="col-md-12" style="padding-bottom: 20px">
+                <hr >
+                <a class="btn btn-primary buy">kaufen!</a>
+            </div>
+        </div>
     </div>
 
     <hr>
@@ -111,14 +116,16 @@
                     '<h3>' + val.Interpret + '</h3>' +
                     '<p>' + val.Album + '</p>' +
                     '<p>' + val.Price + '</p>' +
-                    '<p><button class="btn btn-primary addToCart">add to cart</button></p>' +
+                    '<p><a class="btn btn-primary addToCart">add to cart</a></p>' +
                   '</div>'
                 );
     });
     $('#productlist').append(items.join( "" ));
       
     $(".addToCart").on('click', function() {
-        alert( "added" );
+        $.post( "/post", { interpret: "test", cartId: "test", album: "test" }).done(function( data ) {
+            alert( "added" );
+        });
     });
   });
 

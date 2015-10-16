@@ -30,6 +30,12 @@ app.get(SERVICE_CHECK_HTTP, function(req, resp){
   })
 });
 
+app.post('/post', function(req, resp) {
+    resp.send({
+        message: 'added'
+    })
+})
+
 app.use(static(__dirname + '/app'));
 
 // Start the server
