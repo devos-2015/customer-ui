@@ -91,14 +91,12 @@
     var items = [];
     $.each( data, function( key, val ) {
       items.push( '<div class="col-md-4">' +
-                    '<h2>' + val.Interpret + '</h2>' +
-                    '<p>' + val.Album + '</p>' +
-                    '<p>' + val.Price + '</p>' +
+                    '<h2>' + val.interpret + '</h2>' +
+                    '<p>' + val.album + '</p>' +
+                    '<p>' + val.price + '</p>' +
                   '</div>'
                 );
-
     });
-
     $('#productlist').append(items.join( "" ));
 
   })
