@@ -1,0 +1,32 @@
+{
+  "name": "CustomerUI",
+  "version": "1.0.0",
+  "description": "DevOs Shop",
+  "author": "Unser Name",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devos-2015/hello-world-service.git"
+  },
+  "keywords": [
+    "microservice",
+    "nodejs",
+    "example"
+  ],
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "~4.13.3",
+    "express-static": "^1.0.3"
+  },
+  "devDependencies": {
+    "gulp": "~3.9.0",
+    "gulp-live-server": "~0.0.29",
+    "gulp-shell": "~0.5.0",
+    "minimist": "~1.2.0",
+    "run-sequence": "~1.1.4",
+    "tiny-shipyard-client": "~1.0.0"
+  }
+}
