@@ -105,19 +105,22 @@
   $('#sessionId').append(sessionGuid);
 
   $.getJSON('http://46.101.193.82:32775/GetAllProducts', function(data){
-    console.log(data);
     var items = [];
     $.each( data, function( key, val ) {
       items.push( '<div class="col-md-4">' +
                     '<h3>' + val.Interpret + '</h3>' +
                     '<p>' + val.Album + '</p>' +
                     '<p>' + val.Price + '</p>' +
-                    '<p>' + '' + '</p>' +
+                    '<p><button class="btn btn-primary addToCart">add to cart</button></p>' +
                   '</div>'
                 );
     });
     $('#productlist').append(items.join( "" ));
-  })
+      
+    $(".addToCart").on('click', function() {
+        alert( "added" );
+    });
+  });
 
   $.getJSON('mock/cart/GetCart.json', function(data){
     console.log(data);
